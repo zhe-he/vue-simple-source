@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>top components</h2>
-        <parent></parent>
+        <parent msg="msg from top"></parent>
         <child2></child2>
     </div>
 </template>

@@ -4,5 +4,5 @@
 ## 开始前
 `npm install`
 
-## 通过切换分支查看源码实现步骤
-`git checkout xxx`
+## 通过切换标签查看源码实现步骤
+`git checkout vx.x.x`
