@@ -1,39 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <tree :data="treeList" />
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+
+    <div>
+      <router-link to="/">首页</router-link>
+      <span>|</span>
+      <router-link to="/about">关于</router-link>
+    </div>
+    <router-view></router-view>
+
+  </div>
 </template>
 
 <script>
-import { ref } from "vue"
-import Tree from './components/tree.vue'
-
-const treeData = [{
-  title: "分组1",
-  children: [{
-    title: "分组1-1",
-    children: [{
-      title: "分组1-1-1",
-      children: [{
-        title: "分组1-1-1-1"
-      }]
-    }]
-  }, {
-    title: "分组1-2",
-    children: []
-  }]
-}, {
-  title: "分组2"
-}]
 
 export default {
-  name: 'App',
-  setup() {
-    const treeList = ref(treeData);
-    
-    return { treeList }
-  },
-  components: {
-    Tree
-  }
+  name: 'App'
 }
 </script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
