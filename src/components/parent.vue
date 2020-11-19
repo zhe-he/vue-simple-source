@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>parent components</h2>
-        <child v-bind="$attrs"></child>
+        <child v-on="$listeners"></child>
     </div>
 </template>
 

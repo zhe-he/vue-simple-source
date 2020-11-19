@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>top components</h2>
-        <parent msg="msg from top"></parent>
+        <parent @some-event="someEvent"></parent>
         <child2></child2>
     </div>
 </template>
@@ -10,6 +10,11 @@
     import Parent from "./parent.vue";
     import Child2 from "./child2.vue";
     export default {
+        methods: {
+            someEvent(k) {
+                console.log(k);
+            }
+        },
         components: {
             Parent,
             Child2
