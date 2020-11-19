@@ -1,15 +1,12 @@
 <template>
     <div>
-        <h2 @click="handleClick">child components</h2>
+        <h2>child components</h2>
+        <p>{{name}}</p>
     </div>
 </template>
 
 <script>
     export default {
-        methods: {
-            handleClick() {
-                this.$emit("some-event", { a: 1, b: 2 });
-            }
-        }
+        inject: ["name"]
     }
 </script>

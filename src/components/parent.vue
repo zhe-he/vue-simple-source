@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>parent components</h2>
-        <child v-on="$listeners"></child>
+        <child></child>
     </div>
 </template>
 
