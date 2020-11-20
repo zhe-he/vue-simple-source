@@ -19,8 +19,15 @@ KyRouter.install = function(Vue) {
 
     // 实现两个全局组件router-link和router-view
     Vue.component('router-link', {
+        props: {
+            to: {
+                type: String,
+                require: true
+            }
+        },
         render(h) {
-            return h('a', 'link');
+            // <router-link to="/about">关于</router-link>
+            return h('a', { attrs: { href: "#" + this.to } },  'link');
         }
     }); 
     Vue.component('router-view', {
