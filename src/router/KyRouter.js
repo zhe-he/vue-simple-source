@@ -7,15 +7,17 @@ class KyRouter {
         const init = window.location.hash.substr(1) || '/';
         KyVue.util.defineReactive(this, 'current', init);
 
-        // this.current = '/'
+        // 缓存path和route映射关系
+        this.routeMap = {}
+        this.$options.routes.forEach(route => {
+            this.routeMap[route.path] = route
+        });
 
         window.addEventListener('hashchange', this.onHashChange.bind(this));
-        // window.addEventListener('load', this.onHashChange.bind(this));
     }
 
     onHashChange() {
         this.current = window.location.hash.substr(1);
-        // console.log(this.current);
     }
 }
 
@@ -48,9 +50,8 @@ KyRouter.install = function(Vue) {
     }); 
     Vue.component('router-view', {
         render(h) {
-            const routes = this.$router.$options.routes;
-            const current = this.$router.current;
-            const route = routes.find(route => route.path === current);
+            const { current, routeMap } = this.$router;
+            const route = routeMap[current];
             const cmp = route ? route.component : null;
             return h(cmp);
         }
