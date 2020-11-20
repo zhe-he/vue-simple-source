@@ -3,16 +3,19 @@ class KyRouter {
     constructor(options) {
         this.$options = options;
         
-        KyVue
-        this.current = '/';
+        // 响应式数据
+        const init = window.location.hash.substr(1) || '/';
+        KyVue.util.defineReactive(this, 'current', init);
+
+        // this.current = '/'
 
         window.addEventListener('hashchange', this.onHashChange.bind(this));
-        window.addEventListener('load', this.onHashChange.bind(this));
+        // window.addEventListener('load', this.onHashChange.bind(this));
     }
 
     onHashChange() {
         this.current = window.location.hash.substr(1);
-        console.log(this.current);
+        // console.log(this.current);
     }
 }
 
