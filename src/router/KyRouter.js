@@ -45,7 +45,11 @@ KyRouter.install = function(Vue) {
     }); 
     Vue.component('router-view', {
         render(h) {
-            return h('div', 'view');
+            const routes = this.$router.$options.routes;
+            const current = this.$router.current;
+            const route = routes.find(route => route.path === current);
+            const cmp = route ? route.component : null;
+            return h(cmp);
         }
     })
 }
