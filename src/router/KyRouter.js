@@ -1,11 +1,14 @@
+let KyVue;
 class KyRouter {
     constructor(options) {
         this.$options = options;
+        KyVue
     }
 }
 
 // 实现install方法，注册$router
 KyRouter.install = function(Vue) {
+    KyVue = Vue;
     // 挂载$router
     Vue.mixin({
         beforeCreate() {
@@ -27,7 +30,7 @@ KyRouter.install = function(Vue) {
         },
         render(h) {
             // <router-link to="/about">关于</router-link>
-            return h('a', { attrs: { href: "#" + this.to } },  'link');
+            return h('a', { attrs: { href: "#" + this.to } }, this.$slots.default);
         }
     }); 
     Vue.component('router-view', {
