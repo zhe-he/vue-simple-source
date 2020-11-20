@@ -18,8 +18,16 @@ KyRouter.install = function(Vue) {
     })
 
     // 实现两个全局组件router-link和router-view
-    Vue.component('router-link', {}); 
-    Vue.component('router-view', {})
+    Vue.component('router-link', {
+        render(h) {
+            return h('a', 'link');
+        }
+    }); 
+    Vue.component('router-view', {
+        render(h) {
+            return h('div', 'view');
+        }
+    })
 }
 
 export default KyRouter;
