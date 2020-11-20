@@ -1,6 +1,6 @@
 ### vue-router前置
 1. 安装
-    `npm add vue-router`
+    `yarn add vue-router`
 1. 使用vue-router插件，router.js
     ```
     import Router from 'vue-router'
