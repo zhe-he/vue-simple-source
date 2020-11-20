@@ -2,7 +2,17 @@ let KyVue;
 class KyRouter {
     constructor(options) {
         this.$options = options;
+        
         KyVue
+        this.current = '/';
+
+        window.addEventListener('hashchange', this.onHashChange.bind(this));
+        window.addEventListener('load', this.onHashChange.bind(this));
+    }
+
+    onHashChange() {
+        this.current = window.location.hash.substr(1);
+        console.log(this.current);
     }
 }
 
