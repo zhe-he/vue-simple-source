@@ -11,6 +11,8 @@ class Store {
 
         // 保存mutations
         this._mutations = options.mutations;
+
+        this._actions = options.actions;
     }
 
     get state() {
@@ -25,6 +27,16 @@ class Store {
         if (entry) {
             entry(this.state, payload);
         }
+    }
+
+    dispatch(type, payload) {
+        const entry = this._actions[type];
+        
+        if (!entry) {
+            console.error("unknow action type");
+        }
+
+        return entry(this, payload);
     }
 }
 
