@@ -8,6 +8,9 @@ class Store {
                 $$state: options.state
             }
         });
+
+        // 保存mutations
+        this._mutations = options.mutations;
     }
 
     get state() {
@@ -15,6 +18,13 @@ class Store {
     }
     set state(v) {
         console.error("please use replaceState to reset state");
+    }
+
+    commit(type, payload) {
+        const entry = this._mutations[type];
+        if (entry) {
+            entry(this.state, payload);
+        }
     }
 }
 
