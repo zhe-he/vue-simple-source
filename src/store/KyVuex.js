@@ -13,6 +13,11 @@ class Store {
         this._mutations = options.mutations;
 
         this._actions = options.actions;
+
+        // 改变this
+        const store = this;
+        this.commit = this.commit.bind(store);
+        this.dispatch = this.dispatch.bind(store);
     }
 
     get state() {
