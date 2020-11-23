@@ -1,6 +1,22 @@
 let KyVue;
 // 实现Store类
-class Store {}
+class Store {
+    constructor(options) {
+        // 响应式的state
+        this._vm = new KyVue({
+            data: {
+                $$state: options.state
+            }
+        });
+    }
+
+    get state() {
+        return this._vm._data.$$state;
+    }
+    set state(v) {
+        console.error("please use replaceState to reset state");
+    }
+}
 
 // 实现插件
 function install(Vue) {
