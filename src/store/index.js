@@ -13,6 +13,11 @@ export default new Vuex.Store({
             state.count++
         }
     },
+    getters: {
+        doubleCount(state) {
+            return state.count * 2;
+        }
+    },
     actions: {
         add({ commit }) {
             setTimeout(() => {

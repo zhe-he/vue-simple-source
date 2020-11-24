@@ -2,10 +2,28 @@ let KyVue;
 // 实现Store类
 class Store {
     constructor(options) {
+        const store = this;
+
         // 保存getters
         this._getters = options.getters;
         // 定义computed选项
         const computed = {}
+        this.getters = {}
+        Object.keys(this._getters).forEach(key => {
+            // 获取用户定义的getters
+            const fn = store._getters[key];
+            // 转化为无参数的computed
+            computed[key] = function () {
+                return fn(store.state);
+            }
+
+            // 为getters定义只读属性
+            Object.defineProperty(store.getters, key, {
+                get() {
+                    return store._vm[key];
+                }
+            })
+        })
 
         // 响应式的state
         this._vm = new KyVue({
@@ -21,7 +39,6 @@ class Store {
         this._actions = options.actions;
 
         // 改变this
-        const store = this;
         this.commit = this.commit.bind(store);
         this.dispatch = this.dispatch.bind(store);
     }
