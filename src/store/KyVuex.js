@@ -2,11 +2,17 @@ let KyVue;
 // 实现Store类
 class Store {
     constructor(options) {
+        // 保存getters
+        this._getters = options.getters;
+        // 定义computed选项
+        const computed = {}
+
         // 响应式的state
         this._vm = new KyVue({
             data: {
                 $$state: options.state
-            }
+            },
+            computed
         });
 
         // 保存mutations
